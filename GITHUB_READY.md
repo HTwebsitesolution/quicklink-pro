@@ -43,7 +43,7 @@ git init
 git add .
 git commit -m "Initial commit: QuickLink Pro production ready"
 git branch -M main
-git remote add origin https://github.com/yourusername/quicklink-pro.git
+git remote add origin https://github.com/HTwebsitesolution/quicklink-pro.git
 git push -u origin main
 ```
 

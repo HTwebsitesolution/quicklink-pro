@@ -33,7 +33,7 @@ mv production-frontend.html index.html
 ### **2. Configure MongoDB:**
 Edit `.env` and update your MongoDB connection string:
 ```env
-MONGODB_URI=mongodb+srv://yourusername:yourpassword@yourcluster.mongodb.net/quicklink-pro
+MONGODB_URI=mongodb+srv://htwebsitesolution:yourpassword@yourcluster.mongodb.net/quicklink-pro
 ```
 
 ### **3. Install Dependencies:**

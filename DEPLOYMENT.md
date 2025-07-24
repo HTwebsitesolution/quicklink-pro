@@ -21,7 +21,7 @@ This guide will help you deploy your QuickLink Pro backend to production quickly
    git init
    git add .
    git commit -m "Initial commit"
-   git remote add origin https://github.com/yourusername/quicklink-pro-backend.git
+   git remote add origin https://github.com/HTwebsitesolution/quicklink-pro.git
    git push -u origin main
    ```
 

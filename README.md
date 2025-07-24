@@ -61,8 +61,8 @@ src/
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
-   cd quicklink-pro-backend
+   git clone https://github.com/HTwebsitesolution/quicklink-pro.git
+   cd quicklink-pro
    ```
 
 2. **Install dependencies**
