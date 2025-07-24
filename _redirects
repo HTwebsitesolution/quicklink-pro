@@ -1,0 +1,17 @@
+# URL Redirects for QuickLink Pro
+# This file handles URL redirects on Netlify
+
+# Redirect short URLs to backend API for processing
+/:shortCode  https://your-backend-api.herokuapp.com/:shortCode  301
+
+# API proxy redirects
+/api/*  https://your-backend-api.herokuapp.com/api/:splat  200
+
+# Health check
+/health  https://your-backend-api.herokuapp.com/health  200
+
+# Admin redirects (if needed)
+/admin/*  https://your-backend-api.herokuapp.com/admin/:splat  200
+
+# Fallback for SPA routing
+/*  /index.html  200

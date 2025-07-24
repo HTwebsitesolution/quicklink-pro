@@ -1,0 +1,89 @@
+# Netlify Configuration for QuickLink Pro
+# Documentation: https://docs.netlify.com/configure-builds/file-based-configuration/
+
+[build]
+  # No build process needed for static HTML
+  publish = "."
+
+[build.environment]
+  # Environment variables for build process
+  NODE_VERSION = "18"
+
+# URL redirect rules for shortened URLs
+[[redirects]]
+  # Handle short URL redirects - this will be handled by your backend API
+  from = "/:shortCode"
+  to = "/.netlify/functions/redirect/:shortCode"
+  status = 301
+  force = false
+
+# API proxy to your backend server
+[[redirects]]
+  from = "/api/*"
+  to = "https://your-backend-api.herokuapp.com/api/:splat"
+  status = 200
+  force = true
+  headers = {X-From = "Netlify"}
+
+# Health check redirect
+[[redirects]]
+  from = "/health"
+  to = "https://your-backend-api.herokuapp.com/health"
+  status = 200
+  force = true
+
+# SPA fallback - serve index.html for any unmatched routes
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
+# Cache static assets
+[[headers]]
+  for = "*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+# Custom domain configuration
+[context.production]
+  environment = { API_URL = "https://your-backend-api.herokuapp.com" }
+
+[context.deploy-preview]
+  environment = { API_URL = "https://your-backend-api-staging.herokuapp.com" }
+
+# Form handling (if needed later)
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+# Custom domain settings
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+  
+  [plugins.inputs]
+    buildDir = "."
