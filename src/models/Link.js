@@ -62,7 +62,7 @@ linkSchema.index({ clicks: -1 });
 
 // Virtual for short URL
 linkSchema.virtual('shortUrl').get(function() {
-  return `${process.env.BASE_URL || 'http://localhost:5000'}/${this.shortCode}`;
+  return `${process.env.BASE_URL || 'https://quicklinkpro.io'}/${this.shortCode}`;
 });
 
 // Method to check if link is expired
