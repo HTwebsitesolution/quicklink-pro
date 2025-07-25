@@ -547,8 +547,10 @@
     </main>
 
     <script>
-        // API Configuration
-        const API_BASE_URL = 'http://localhost:5000/api';
+        // API Configuration - Auto-detect environment
+        const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
+            ? 'http://localhost:5000/api' 
+            : 'https://quicklinkpro-api.railway.app/api'; // We'll update this with your actual Railway URL
 
         // Set minimum date for expiration
         document.addEventListener('DOMContentLoaded', function() {
@@ -581,6 +583,13 @@
 
             try {
                 const response = await fetch(url, config);
+                
+                // Check if response is HTML (error page) instead of JSON
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    throw new Error('API server not available - please try again later');
+                }
+                
                 const data = await response.json();
                 
                 if (!response.ok) {
@@ -590,6 +599,12 @@
                 return data;
             } catch (error) {
                 console.error('API Error:', error);
+                
+                // If it's a network error or JSON parse error, provide helpful message
+                if (error.name === 'TypeError' || error.message.includes('JSON')) {
+                    throw new Error('Backend API is not available. Please start the backend server or wait for deployment.');
+                }
+                
                 throw error;
             }
         }
@@ -714,14 +729,18 @@
         // Test API connection on page load
         window.addEventListener('load', async function() {
             try {
-                const response = await fetch('http://localhost:5000/health');
+                const healthUrl = API_BASE_URL.replace('/api', '/health');
+                const response = await fetch(healthUrl);
+                
                 if (response.ok) {
-                    showStatus('Connected to QuickLink Pro API', 'success');
+                    const data = await response.json();
+                    showStatus('✅ Connected to QuickLink Pro API', 'success');
                 } else {
-                    showStatus('API connection failed - using offline mode', 'error');
+                    throw new Error('API not responding');
                 }
             } catch (error) {
-                showStatus('API server not running - please start backend', 'error');
+                showStatus('⚠️ Backend API not available - functionality limited', 'error');
+                console.log('API Connection Error:', error);
             }
         });
     </script>
