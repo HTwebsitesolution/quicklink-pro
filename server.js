@@ -63,6 +63,21 @@ app.get('/health', (req, res) => {
   });
 });
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.status(200).json({
+    message: 'QuickLink Pro API',
+    version: '1.0.0',
+    status: 'running',
+    endpoints: {
+      health: '/health',
+      shorten: '/api/url/shorten',
+      analytics: '/api/analytics',
+      admin: '/api/admin'
+    }
+  });
+});
+
 // API routes
 app.use('/api/url', shortenLimiter, urlRoutes);
 app.use('/api/analytics', analyticsRoutes);
@@ -118,10 +133,7 @@ app.use(notFound);
 app.use(errorHandler);
 
 // Database connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/quicklink-pro', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/quicklink-pro')
 .then(() => {
   console.log('✅ Connected to MongoDB');
   // Start server - listen on all interfaces for Render
