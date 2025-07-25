@@ -3,49 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickLink Pro - Professional URL Shortener & QR Code Generator</title>
-    
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="QuickLink Pro - Create short URLs, generate QR codes, and track clicks with our professional URL shortener service. Fast, secure, and reliable.">
-    <meta name="keywords" content="URL shortener, QR code generator, link tracking, short URLs, analytics, QuickLink Pro">
-    <meta name="author" content="QuickLink Pro">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="QuickLink Pro - Professional URL Shortener">
-    <meta property="og:description" content="Create short URLs, generate QR codes, and track clicks with our professional URL shortener service.">
-    <meta property="og:image" content="https://quicklinkpro.io/og-image.png">
-    <meta property="og:url" content="https://quicklinkpro.io">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="QuickLink Pro - Professional URL Shortener">
-    <meta name="twitter:description" content="Create short URLs, generate QR codes, and track clicks with our professional URL shortener service.">
-    <meta name="twitter:image" content="https://quicklinkpro.io/twitter-image.png">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    
-    <!-- External Libraries -->
+    <title>QuickLink Pro - URL Shortener & QR Code Generator</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.3/qrcode.min.js"></script>
     
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX"
             crossorigin="anonymous"></script>
-    
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
     
     <style>
         * {
@@ -436,8 +399,9 @@
                 <p>Create short links, track clicks, and generate QR codes with our professional URL shortener</p>
             </div>
 
-            <!-- Top Banner Advertisement -->
+            <!-- Top Banner Advertisement - More Prominent -->
             <div class="ad-container ad-banner">
+                <!-- Google AdSense Large Banner Ad -->
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-XXXXXXXXXX"
@@ -451,6 +415,7 @@
 
             <!-- Mobile Banner Advertisement -->
             <div class="ad-container ad-mobile ad-mobile-banner">
+                <!-- Google AdSense Mobile Banner -->
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-XXXXXXXXXX"
@@ -466,6 +431,7 @@
             <div class="content-wrapper">
                 <!-- Left Vertical Advertisement -->
                 <div class="ad-vertical-left">
+                    <!-- Google AdSense Vertical Left Ad -->
                     <ins class="adsbygoogle"
                          style="display:block"
                          data-ad-client="ca-pub-XXXXXXXXXX"
@@ -480,47 +446,48 @@
                 <!-- Main Content Center -->
                 <div class="main-content-center">
                     <div class="main-panel">
-                        <div id="statusMessage" style="display: none;"></div>
-                        
-                        <form id="urlForm" onsubmit="shortenUrl(event)">
-                            <div class="form-group">
-                                <label for="originalUrl">Original URL</label>
-                                <input type="url" id="originalUrl" placeholder="https://example.com" required>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="customAlias">Custom Alias (Optional)</label>
-                                    <input type="text" id="customAlias" placeholder="my-custom-link" pattern="[a-zA-Z0-9-_]+">
-                                </div>
-                                <div class="form-group">
-                                    <label for="expiration">Expiration (Optional)</label>
-                                    <input type="date" id="expiration" min="">
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="description">Description (Optional)</label>
-                                <input type="text" id="description" placeholder="Description for your link">
-                            </div>
-
-                            <button type="submit" class="btn" id="submitBtn">Shorten URL & Generate QR</button>
-                        </form>
-
-                        <div id="singleResult" class="result-card" style="display: none;">
-                            <h3>Your Shortened URL</h3>
-                            <div class="result-url">
-                                <input type="text" id="shortUrl" readonly>
-                                <button class="copy-btn" onclick="copyToClipboard('shortUrl')">Copy</button>
-                            </div>
-                            <div class="qr-container">
-                                <div class="qr-code" id="qrCode"></div>
-                                <button class="btn btn-secondary" onclick="downloadQR()">Download QR Code</button>
-                            </div>
+                <div id="statusMessage" style="display: none;"></div>
+                
+                <form id="urlForm" onsubmit="shortenUrl(event)">
+                    <div class="form-group">
+                        <label for="originalUrl">Original URL</label>
+                        <input type="url" id="originalUrl" placeholder="https://example.com" required>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customAlias">Custom Alias (Optional)</label>
+                            <input type="text" id="customAlias" placeholder="my-custom-link" pattern="[a-zA-Z0-9-_]+">
                         </div>
+                        <div class="form-group">
+                            <label for="expiration">Expiration (Optional)</label>
+                            <input type="date" id="expiration" min="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description (Optional)</label>
+                        <input type="text" id="description" placeholder="Description for your link">
+                    </div>
+
+                    <button type="submit" class="btn" id="submitBtn">Shorten URL & Generate QR</button>
+                </form>
+
+                <div id="singleResult" class="result-card" style="display: none;">
+                    <h3>Your Shortened URL</h3>
+                    <div class="result-url">
+                        <input type="text" id="shortUrl" readonly>
+                        <button class="copy-btn" onclick="copyToClipboard('shortUrl')">Copy</button>
+                    </div>
+                    <div class="qr-container">
+                        <div class="qr-code" id="qrCode"></div>
+                        <button class="btn btn-secondary" onclick="downloadQR()">Download QR Code</button>
+                    </div>
+                </div>
 
                         <!-- Square Advertisement after results -->
                         <div class="ad-container ad-square">
+                            <!-- Google AdSense Square Ad -->
                             <ins class="adsbygoogle"
                                  style="display:block"
                                  data-ad-client="ca-pub-XXXXXXXXXX"
@@ -536,6 +503,7 @@
 
                 <!-- Right Vertical Advertisement -->
                 <div class="ad-vertical-right">
+                    <!-- Google AdSense Vertical Right Ad -->
                     <ins class="adsbygoogle"
                          style="display:block"
                          data-ad-client="ca-pub-XXXXXXXXXX"
@@ -550,6 +518,7 @@
 
             <!-- Sidebar Advertisement (Mobile) -->
             <div class="ad-container ad-sidebar">
+                <!-- Google AdSense Sidebar Ad -->
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-XXXXXXXXXX"
@@ -563,6 +532,7 @@
 
             <!-- Bottom Banner Advertisement -->
             <div class="ad-container ad-banner">
+                <!-- Google AdSense Bottom Banner -->
                 <ins class="adsbygoogle"
                      style="display:block"
                      data-ad-client="ca-pub-XXXXXXXXXX"
@@ -577,10 +547,10 @@
     </main>
 
     <script>
-        // Configuration - will be set via environment variables in production
-        const API_BASE_URL = window.location.hostname === 'localhost' 
+        // API Configuration - Auto-detect environment
+        const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' 
             ? 'http://localhost:5000/api' 
-            : 'https://quicklinkpro.io/api';
+            : 'https://quicklinkpro-api.onrender.com/api'; // Free Render deployment URL
 
         // Set minimum date for expiration
         document.addEventListener('DOMContentLoaded', function() {
@@ -613,6 +583,13 @@
 
             try {
                 const response = await fetch(url, config);
+                
+                // Check if response is HTML (error page) instead of JSON
+                const contentType = response.headers.get('content-type');
+                if (!contentType || !contentType.includes('application/json')) {
+                    throw new Error('API server not available - please try again later');
+                }
+                
                 const data = await response.json();
                 
                 if (!response.ok) {
@@ -622,6 +599,12 @@
                 return data;
             } catch (error) {
                 console.error('API Error:', error);
+                
+                // If it's a network error or JSON parse error, provide helpful message
+                if (error.name === 'TypeError' || error.message.includes('JSON')) {
+                    throw new Error('Backend API is not available. Please start the backend server or wait for deployment.');
+                }
+                
                 throw error;
             }
         }
@@ -746,18 +729,18 @@
         // Test API connection on page load
         window.addEventListener('load', async function() {
             try {
-                const healthUrl = window.location.hostname === 'localhost' 
-                    ? 'http://localhost:5000/health' 
-                    : 'https://quicklinkpro.io/health';
-                    
+                const healthUrl = API_BASE_URL.replace('/api', '/health');
                 const response = await fetch(healthUrl);
+                
                 if (response.ok) {
-                    showStatus('Connected to QuickLink Pro API', 'success');
+                    const data = await response.json();
+                    showStatus('✅ Connected to QuickLink Pro API', 'success');
                 } else {
-                    showStatus('API connection failed - some features may be limited', 'error');
+                    throw new Error('API not responding');
                 }
             } catch (error) {
-                showStatus('API server not available - using offline mode', 'error');
+                showStatus('⚠️ Backend API not available - functionality limited', 'error');
+                console.log('API Connection Error:', error);
             }
         });
     </script>
