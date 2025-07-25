@@ -17,6 +17,9 @@ const notFound = require('./src/middleware/notFound');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+// Ensure the app listens on all interfaces for Render
+app.set('port', PORT);
+
 // Security middleware
 app.use(helmet());
 
@@ -121,9 +124,11 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/quicklink
 })
 .then(() => {
   console.log('✅ Connected to MongoDB');
-  app.listen(PORT, () => {
+  // Start server - listen on all interfaces for Render
+  app.listen(PORT, '0.0.0.0', () => {
     console.log(`🚀 QuickLink Pro API server running on port ${PORT}`);
     console.log(`📊 Health check: http://localhost:${PORT}/health`);
+    console.log(`🌐 Environment: ${process.env.NODE_ENV || 'development'}`);
   });
 })
 .catch((error) => {
