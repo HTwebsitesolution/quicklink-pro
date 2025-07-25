@@ -56,8 +56,7 @@ const linkSchema = new mongoose.Schema({
   timestamps: true, // Adds createdAt and updatedAt
 });
 
-// Index for faster queries
-linkSchema.index({ shortCode: 1 });
+// Index for faster queries (shortCode already indexed via unique: true)
 linkSchema.index({ createdAt: -1 });
 linkSchema.index({ clicks: -1 });
 
