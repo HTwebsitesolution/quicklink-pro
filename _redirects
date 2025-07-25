@@ -2,7 +2,7 @@
 # This file handles URL redirects on Netlify
 
 # Redirect short URLs to backend API for processing
-/:shortCode  https://your-backend-api.herokuapp.com/:shortCode  301
+/:shortCode  https://quicklink-pro.onrender.com/:shortCode  301
 
 # API proxy redirects
 /api/*  https://your-backend-api.herokuapp.com/api/:splat  200
