@@ -5,13 +5,13 @@
 /:shortCode  https://quicklink-pro.onrender.com/:shortCode  301
 
 # API proxy redirects
-/api/*  https://your-backend-api.herokuapp.com/api/:splat  200
+/api/*  https://quicklink-pro.onrender.com/api/:splat  200
 
 # Health check
-/health  https://your-backend-api.herokuapp.com/health  200
+/health  https://quicklink-pro.onrender.com/health  200
 
 # Admin redirects (if needed)
-/admin/*  https://your-backend-api.herokuapp.com/admin/:splat  200
+/admin/*  https://quicklink-pro.onrender.com/admin/:splat  200
 
 # Fallback for SPA routing
 /*  /index.html  200

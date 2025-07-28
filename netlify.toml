@@ -20,7 +20,7 @@
 # API proxy to your backend server
 [[redirects]]
   from = "/api/*"
-  to = "https://your-backend-api.herokuapp.com/api/:splat"
+  to = "https://quicklink-pro.onrender.com/api/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
@@ -28,7 +28,7 @@
 # Health check redirect
 [[redirects]]
   from = "/health"
-  to = "https://your-backend-api.herokuapp.com/health"
+  to = "https://quicklink-pro.onrender.com/health"
   status = 200
   force = true
 
@@ -61,10 +61,10 @@
 
 # Custom domain configuration
 [context.production]
-  environment = { API_URL = "https://your-backend-api.herokuapp.com" }
+  environment = { API_URL = "https://quicklink-pro.onrender.com" }
 
 [context.deploy-preview]
-  environment = { API_URL = "https://your-backend-api-staging.herokuapp.com" }
+  environment = { API_URL = "https://quicklink-pro.onrender.com" }
 
 # Form handling (if needed later)
 [build.processing]
